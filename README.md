@@ -1,38 +1,23 @@
-Hello, fellow developer!
+## Overview
+NubiWeather is a weather forecasting application built using Java 21 and Spring Boot. The application fetches real-time and forecast weather data for specified cities using an external weather API. It provides two main endpoints to access this data.
 
-If you are reading this, you're probably interested in joining Nubisoft and that's great! We are always looking for new members to join our team and help us develop and maintain our projects in e-health, e-commerce and more.
+## Features
+Real-time Weather Data: Fetches current weather information for a list of cities, including temperature, weather condition, wind speed, humidity, and more.
 
-## What is Nubisoft?
-NubiSoft is a software development company that specializes in developing software solutions for the healthcare and e-commerce industries. We are a team of passionate developers who are dedicated to creating innovative and user-friendly software that helps our clients achieve their business goals.
+Forecast Weather Data: Retrieves hourly weather forecasts for the next three days for the specified cities.
+
+Data Model: Utilizes a WeatherData model to structure weather information effectively.
+
+Simple REST API: Exposes endpoints to retrieve weather data in a structured format.
 
 
-## What is this repository?
-This repository contains starter code for a simple web application that should use https://www.weatherapi.com/ to show current weather in 2 cities: Gliwice and Hamburg. The application can be built using any technology you like, but we've provided couple of starters in different technologies to help get you up and running.
-
-## How to apply?
-
-1. Clone this repository
-2. Choose if you want to apply for a frontend, backend or fullstack position
-3. Choose a technology you want to use for frontend, backend or fullstack application (we suggest using provided examples, but you can use any technology you like and any starter code you like) 
-4. Implement the application
-5. Create a public repository and push your code there
-6. Wait for our feedback (we'll always give you feedback, no matter if you qualify for the next stage or not)
-7. Good luck!
-
-## What we expect from you?
-
-### Frontend (JS/TS, Framework of your choice, CSS, HTML, Responsive design, API usage)
-Build simple web application that uses https://www.weatherapi.com/ to show current weather in 2 cities: Gliwice and Hamburg. The application can be built using any technology you like.
-
-Detailed requirements for frontend can be found in the README.md file in frontend directory.
-
-### Backend (Backend framework, usage of SQL/No-SQL database, API usage, Docker, Best practices, Clean code, Version control system, Testing)
-Build simple API that uses https://www.weatherapi.com/ to show current weather in 2 cities: Gliwice and Hamburg. The application can be built using any technology you like.
-
-Detailed requirements for backend can be found in the README.md file in backend directory.
-
-### Fullstack
-1. Implement both frontend and backend requirements
-2. Integration of frontend and backend projects
-3. Instructions on how to run the application
-4. Readme with basic information about the application and features you've implemented and how the frontend and backend communicate
+## How to Run the Application
+1. Ensure Java 21 is installed on your machine.
+2. Build and run the application:
+-Navigate to the project directory.
+-Run the NubiweatherApplication class to start the application.
+3. Access the endpoints:
+After starting NubiweatherApplication, you can view the endpoints at:
+http://localhost:8080/realtime-weather
+http://localhost:8080/forecast-weather
+Use Postman or your web browser to display weather data from these endpoints.
