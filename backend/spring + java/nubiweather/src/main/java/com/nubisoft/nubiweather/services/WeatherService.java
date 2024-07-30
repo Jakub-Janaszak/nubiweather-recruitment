@@ -75,16 +75,20 @@ public class WeatherService {
     private List<WeatherData> parseWeatherDataList(JSONObject json) {
         List<WeatherData> weatherDataList = new ArrayList<>();
         String locationName = json.getJSONObject("location").getString("name");
-        JSONArray forecastHour = json.getJSONObject("forecast").getJSONArray("forecastday").getJSONObject(0).getJSONArray("hour");
-        for (int i = 0; i < forecastHour.length(); i++) {
+        JSONArray forecastDay = json.getJSONObject("forecast").getJSONArray("forecastday");
 
-            String timeStr = forecastHour.getJSONObject(i).getString("time");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            LocalDateTime localtime = LocalDateTime.parse(timeStr, formatter);
+        for (int i = 0; i < forecastDay.length(); i++) {
+            JSONArray forecastHour = forecastDay.getJSONObject(i).getJSONArray("hour");
+            for (int j = 0; j < forecastHour.length(); j++) {
 
-            WeatherData weatherData = new WeatherData(locationName, forecastHour.getJSONObject(i).getDouble("temp_c"), forecastHour.getJSONObject(i).getJSONObject("condition").getString("text"), forecastHour.getJSONObject(i).getDouble("wind_kph"), forecastHour.getJSONObject(i).getInt("humidity"), forecastHour.getJSONObject(i).getDouble("feelslike_c"), localtime);
+                String timeStr = forecastHour.getJSONObject(j).getString("time");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime localtime = LocalDateTime.parse(timeStr, formatter);
 
-            weatherDataList.add(weatherData);
+                WeatherData weatherData = new WeatherData(locationName, forecastHour.getJSONObject(j).getDouble("temp_c"), forecastHour.getJSONObject(j).getJSONObject("condition").getString("text"), forecastHour.getJSONObject(j).getDouble("wind_kph"), forecastHour.getJSONObject(j).getInt("humidity"), forecastHour.getJSONObject(j).getDouble("feelslike_c"), localtime);
+
+                weatherDataList.add(weatherData);
+            }
         }
         return weatherDataList;
     }
